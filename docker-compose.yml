@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mysql:
+     image: 'mysql:latest'
+     container_name: 'java_mysql_db'
+     environment:
+       - 'MYSQL_ROOT_PASSWORD=12345'
+       - 'MYSQL_DB=inside24'
+
+  app:
+    build: ./
+    container_name: "Tokenizer"
+    ports:
+      - 8075:8075
