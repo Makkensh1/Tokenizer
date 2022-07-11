@@ -15,7 +15,7 @@ Create TABLE inside24.messages (
     text TEXT not null,
     user_id BIGINT NOT NULL,
     date DATETIME NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES inside24.Users (id)
+    FOREIGN KEY (user_id) REFERENCES inside24.users (id)
 );
 
 -- Table: roles

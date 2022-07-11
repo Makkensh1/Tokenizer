@@ -2,14 +2,27 @@ version: '3'
 
 services:
   mysql:
-     image: 'mysql:latest'
-     container_name: 'java_mysql_db'
-     environment:
-       - 'MYSQL_ROOT_PASSWORD=12345'
-       - 'MYSQL_DB=inside24'
+    hostname: 'java_mysql_db'
+    image: 'mysql:latest'
+    container_name: 'java_mysql_db'
+    ports:
+      - "3307:3306"
+    environment:
+      - 'MYSQL_ROOT_PASSWORD=12345'
+      - 'MYSQL_DB=inside24'
+      - 'MYSQL_USER: root'
+      - 'MYSQL_PASSWORD: 12345'
+      - 'MYSQL_TCP_PORT: 3306'
 
   app:
     build: ./
     container_name: "Tokenizer"
     ports:
-      - 8075:8075
+      - "8075:8075"
+
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://java_mysql_db:3306/database?autoReconnect=true&useSSL=false
+#      SPRING_DATASOURCE_DRIVER-CLASS-NAME: com.mysql.cj.jdbc.Driver
+
+    depends_on:
+      - mysql
