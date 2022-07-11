@@ -1,0 +1,20 @@
+http://localhost:8075/auth/login
+
+{
+"name":"User",
+"password":"Test"
+}
+
+http://localhost:8075/messages
+
+{
+"name":"User",
+"message":"Test"
+}
+
+http://localhost:8075/messages
+
+{
+"name":"User",
+"message":"history 5"
+}
